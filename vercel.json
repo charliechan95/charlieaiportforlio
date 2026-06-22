@@ -1,4 +1,4 @@
 {
-  "version": 2,
-  "buildCommand": "echo 'Already built'"
+  "version": 3,
+  "buildCommand": "npx vite build"
 }
