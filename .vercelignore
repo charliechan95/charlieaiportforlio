@@ -1,0 +1,8 @@
+node_modules
+bun.lock
+package-lock.json
+src/assets/aiecosystem.png
+src/assets/AItraining.png
+src/assets/AIAgent.png
+src/assets/charlie.png
+src/assets/automation.png
