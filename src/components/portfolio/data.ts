@@ -1,5 +1,5 @@
 import {
-  Brain, Workflow, Bot, Server, Cpu, GraduationCap, Zap, AppWindow, Sparkles, LineChart,
+  Brain, Workflow, Bot, Server, Cpu, GraduationCap, LineChart,
 } from "lucide-react";
 
 export const services = [
@@ -9,8 +9,6 @@ export const services = [
   { icon: Cpu, title: "LLM Integration & Cost Optimization", desc: "Cut AI operating costs with smart multi-provider deployment.", tags: ["OpenRouter", "NVIDIA NIM", "DeepSeek", "MiniMax", "Owl Alpha", "Ollama"] },
   { icon: GraduationCap, title: "AI Training & Workshops", desc: "Hands-on training for teams, educators and students.", tags: ["Prompt Engineering", "AI Productivity", "Agents", "Local AI", "Content", "Automation"] },
   { icon: Workflow, title: "Workflow Automation", desc: "Automate repetitive work — social media, documents, reports, browsers, PDFs, research, Excel, design and bookings." },
-  { icon: AppWindow, title: "AI Application Development", desc: "Custom AI apps: chatbots, RAG systems, voice agents, travel planners, and business tools." },
-  { icon: Sparkles, title: "AI Content Creation", desc: "AI-generated images, video, music, voice and social media content for brands and creators." },
   { icon: LineChart, title: "Machine Learning & AI Engineering", desc: "ML systems, classifiers, AI pipelines and RAG solutions in Python." },
 ];
 

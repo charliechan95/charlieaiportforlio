@@ -3,7 +3,7 @@ import { useState } from "react";
 import { toast, Toaster } from "sonner";
 import {
   ArrowRight, Download, Mail, MessageCircle, Github, Linkedin, MapPin, Phone,
-  CheckCircle2, ExternalLink, GraduationCap, Briefcase,
+  CheckCircle2, ExternalLink, GraduationCap, Briefcase, Cpu, Star, AppWindow, Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,6 +25,12 @@ import hermesImg from "@/assets/hermes.png";
 import automationImg from "@/assets/automation.jpg";
 import translatorImg from "@/assets/translatorapp.jpeg";
 import aiecosystemImg from "@/assets/aiecosystem.jpg";
+import trainingWorkshopImg from "@/assets/ai-training-workshop.jpg";
+import automationProcessImg from "@/assets/ai-automation-process.jpg";
+import aiPromoImg from "@/assets/AI_promo.PNG";
+import industriesImg from "@/assets/industries-ai-integration.jpg";
+import resumePdf from "@/assets/resume.pdf";
+import aiCreationImg from "@/assets/AIcreation.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,7 +61,18 @@ function Index() {
       <Hero />
       <Metrics />
       <About />
+      <div className="px-4 py-8">
+        <div className="mx-auto max-w-7xl">
+          <img
+            src={aiPromoImg}
+            alt="AI Consultant Services"
+            className="block w-full rounded-2xl border border-border/50 object-cover shadow-card"
+          />
+        </div>
+      </div>
+      <WhoIWorkWith />
       <Services />
+      <AICreation />
       <Skills />
       <Projects />
       <Experience />
@@ -138,7 +155,7 @@ function Hero() {
               <a href="#projects">View Projects</a>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <a href="/Charlie-Chan-Resume.pdf" download><Download className="h-4 w-4" /> Resume</a>
+              <a href={resumePdf} download><Download className="h-4 w-4" /> Resume</a>
             </Button>
             <Button variant="ghost" size="xl" asChild>
               <a href="#contact"><Mail className="h-4 w-4" /> Contact Me</a>
@@ -206,8 +223,8 @@ function Metrics() {
 /* ─── About ─── */
 function About() {
   const strengths = [
-    "AI Consulting", "Workflow Automation", "AI Agent Development", "Prompt Engineering", "AI Education",
-    "Local AI Deployment", "Machine Learning", "API Integration", "RAG Development", "MCP Server Integration", "AI Content Creation",
+    "AI Consulting", "Workflow Automation", "Agentic AI", "Prompt Engineering", "AI Education",
+    "Local LLM Deployment", "Machine Learning", "API Integration", "RAG Development", "MCP Server Integration", "AI Content Creation", "Python Programming", "AI Application Development",
   ];
   return (
     <section id="about" className="scroll-mt-24 px-4 py-24">
@@ -216,7 +233,7 @@ function About() {
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
           <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-card">
             <p className="text-muted-foreground">
-              Hi, I'm <span className="font-semibold text-foreground">Charlie Chan Ho Chung</span>, an AI Consultant and Automation Specialist passionate about using AI, prompts, AI agents and workflow automation to solve real business problems.
+              Hi, I am <span className="font-semibold text-foreground">Charlie Chan Ho Chung</span>, an AI Consultant passionate about AI technologies. I specialise in prompt engineering, designing agentic AI workflow, applications and automation to solve real business problem.
             </p>
             <p className="mt-4 text-muted-foreground">
               I help organizations deploy practical AI solutions, integrate large language models, automate repetitive processes and empower teams through AI training and workshops.
@@ -278,8 +295,66 @@ function Services() {
           <div className="overflow-hidden rounded-2xl border border-border/50 shadow-card">
             <img src={aiTrainingImg} alt="AI Training" className="w-full rounded-2xl object-cover" />
           </div>
+
+          {/* AI Training & Workshops detail */}
+          <div className="rounded-2xl border border-border/50 bg-card/60 p-8 shadow-soft backdrop-blur-sm">
+            <h3 className="font-display text-lg font-semibold">AI Training & Workshops</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Hands-on AI training for corporates, government, tech companies, and educational institutions — in Hong Kong and online.</p>
+            <div className="mt-5 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="space-y-3">
+                {[
+                  "On-site and online delivery — flexible to your team's schedule",
+                  "Hands-on sessions with real tools: HeyGen, Dify.ai, Grok, Stable Diffusion, and more",
+                  "Curriculum tailored to audience level — from beginners to technical staff",
+                  "Course materials designed and customised for each engagement",
+                ].map((h) => (
+                  <div key={h} className="flex items-start gap-3 text-sm">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span className="text-muted-foreground">{h}</span>
+                  </div>
+                ))}
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {[
+                    { value: 8, suffix: "+", label: "Sessions delivered" },
+                    { value: "All", label: "levels" },
+                    { value: "On-site & Online", label: "Formats" },
+                  ].map((s) => (
+                    <div key={s.label} className="rounded-xl border border-border/60 bg-card p-3 text-center">
+                      <div className="font-display text-lg font-bold text-primary">
+                        {typeof s.value === "number" ? <Counter to={s.value} suffix={s.suffix} /> : s.value}
+                      </div>
+                      {s.label && <div className="mt-0.5 text-[10px] text-muted-foreground">{s.label}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-xl border border-border/50 shadow-card">
+                <img src={trainingWorkshopImg} alt="Corporate AI training workshop" className="block w-full object-cover" />
+              </div>
+            </div>
+          </div>
+
           <div className="overflow-hidden rounded-2xl border border-border/50 shadow-card">
             <img src={aiAgentImg} alt="AI Agent" className="w-full rounded-2xl object-cover" />
+          </div>
+
+          {/* AI Automation & Agent Deployment card */}
+          <div className="rounded-2xl border border-border/60 bg-card p-8 shadow-card">
+            <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-primary/20 bg-primary/5 text-primary">
+              <Cpu className="h-5 w-5" />
+            </div>
+            <h3 className="font-display text-xl font-semibold">AI Automation & Agent Deployment</h3>
+            <p className="mt-2 text-sm text-muted-foreground">For organisations looking to automate repetitive workflows, deploy AI agents, and reduce manual overhead.</p>
+            <div className="mt-4 overflow-hidden rounded-xl border border-border/30">
+              <img src={automationProcessImg} alt="AI automation process illustration" className="block w-full object-cover" />
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {["Startups", "Government", "Professional Services", "Insurance", "Logistics"].map((c) => (
+                <span key={c} className="rounded-full border border-border/70 bg-secondary/50 px-3 py-1.5 text-xs font-medium">
+                  {c}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -300,6 +375,58 @@ function Services() {
                   </div>
                 )}
               </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── AI Application Development & Content Creation ─── */
+function AICreation() {
+  const cards = [
+    {
+      title: "AI Application Development",
+      desc: "Custom AI apps: chatbots, RAG systems, voice agents, travel planners, and business tools.",
+      tags: ["Python", "Streamlit", "React", "TypeScript", "RAG", "LLMs"],
+    },
+    {
+      title: "AI Content Creation",
+      desc: "AI-generated images, video, music, voice and social media content for brands and creators.",
+      tags: ["Gemini", "Stable Diffusion", "HeyGen", "Grok", "Image Gen", "Video Gen"],
+    },
+  ];
+
+  const cardIcons = [AppWindow, Sparkles];
+
+  return (
+    <section className="scroll-mt-24 px-4 py-24" style={{ background: "var(--gradient-warm)" }}>
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          kicker="AI Solutions"
+          title="Application Development & Content Creation"
+          sub="End-to-end AI solutions — from building custom applications to generating creative content."
+        />
+        <div className="mt-10 overflow-hidden rounded-2xl border border-border/50 shadow-card">
+          <img src={aiCreationImg} alt="AI Application Development & Content Creation" className="block w-full object-cover" />
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2">
+          {cards.map((c, i) => {
+            const Icon = cardIcons[i];
+            return (
+            <article key={c.title} className="group relative overflow-hidden rounded-2xl border border-border/60 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
+              <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl border border-primary/20 bg-primary/5 text-primary">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="font-display text-lg font-semibold">{c.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{c.desc}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {c.tags.map((t) => (
+                  <span key={t} className="rounded-md border border-border/60 bg-background/60 px-2 py-0.5 text-[11px] text-muted-foreground">{t}</span>
+                ))}
+              </div>
+            </article>
             );
           })}
         </div>
@@ -525,6 +652,49 @@ function ContactRow({ icon, label, value, href }: { icon: React.ReactNode; label
     </div>
   );
   return href ? <a href={href}>{content}</a> : content;
+}
+
+/* ─── Who I Work With ─── */
+function WhoIWorkWith() {
+  const industries = [
+    { name: "Startups", desc: "MVP builds, AI product integration, rapid prototyping" },
+    { name: "Government", desc: "Process automation, document handling, internal tools" },
+    { name: "Professional Services", desc: "Workflow automation, knowledge management, client delivery" },
+    { name: "Insurance", desc: "Claims processing, document analysis, customer service automation" },
+    { name: "Logistics", desc: "Supply chain optimisation, tracking automation, reporting" },
+    { name: "Corporates", desc: "Staff AI training, productivity tools, team enablement" },
+    { name: "Tech Companies", desc: "Developer training, AI tooling, agent deployment" },
+    { name: "Education", desc: "Curriculum design, AI literacy, student workshops" },
+    { name: "Travel", desc: "Booking automation, itinerary planning, customer experience AI" },
+    { name: "Reception", desc: "Customer service automation, enquiry handling, front-desk AI tools" },
+  ];
+
+  return (
+    <section id="who-i-work-with" className="scroll-mt-24 px-4 py-24">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          kicker="Who I Work With"
+          title="Corporate teams, Enterprises, Educators, Across Industries"
+          sub="I work with organisations across Hong Kong that need practical AI — whether automating operations or upskilling teams."
+        />
+        <div className="mt-8 overflow-hidden rounded-2xl border border-border/50 shadow-card">
+          <img
+            src={industriesImg}
+            alt="AI integrated across industries — Government, Logistics, Corporate, Startup, Education"
+            className="block w-full object-cover"
+          />
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {industries.map((ind) => (
+            <div key={ind.name} className="rounded-xl border border-border/60 bg-card p-5 shadow-card transition-all hover:shadow-card-hover">
+              <h3 className="font-display text-base font-semibold">{ind.name}</h3>
+              <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{ind.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 /* ─── Footer ─── */
